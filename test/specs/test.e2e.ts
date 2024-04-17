@@ -1,23 +1,14 @@
-import { expect, browser } from '@wdio/globals'
-import entry from '../pageobjects/entry.page.js'
-
-
-const signUpBtnIos = "~just-example";
-const entryTitleIos = "~just-example-label";
+import { expect } from '@wdio/globals'
+import entry from "./../screenobjects/all.screen.ts";
 
 
 describe('My Login application', () => {
-    it('should sign up with valid credentials', async () => {
-        await browser.pause(5000)
-        expect(await entry.isEntryTitleDisplayed(entryTitleIos)).true;
-        expect(await entry.isSignUpButtonDisplayed(signUpBtnIos)).true;
-        // expect(await entry.getSignUpButtonText(signUpBtnIos)).toEqual("Sign up"); // element has no text 
-        await entry.clickSignUpButton(signUpBtnIos);
-        await browser.pause(5000)
- 
-        
+    
+    it('Verify the plus button functionality', async () => {
+        await entry.mainScreen.clickElement(entry.mainScreen.elements.fiveButton);
+        await entry.mainScreen.clickElement(entry.mainScreen.elements.plusButton);
+        await entry.mainScreen.clickElement(entry.mainScreen.elements.sixButton);
+        await expect(entry.mainScreen.isElementDisplayed(entry.mainScreen.elements.resultPreviewField));
     })
-
-
 })
 
