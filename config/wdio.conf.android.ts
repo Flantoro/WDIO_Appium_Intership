@@ -14,6 +14,11 @@ export const config = {
       // https://github.com/webdriverio/webdriverio/tree/master/packages/wdio-appium-service
       args: ["--allow-insecure"],
     },
+
+    beforeTest: async function () {
+      await driver.closeApp();
+      await driver.activateApp("calculator");
+    },
     
     capabilities: [{
       // capabilities for local Appium web tests on an Android Emulator or Real device
