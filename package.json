@@ -6,6 +6,7 @@
     "node": "^16.17.0 || >=18.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "@wdio/allure-reporter": "^8.14.0",
     "@wdio/appium-service": "^8.14.3",
     "@wdio/browserstack-service": "^8.14.3",
