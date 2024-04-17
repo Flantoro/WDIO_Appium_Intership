@@ -2,10 +2,6 @@ import { expect } from '@wdio/globals'
 import entry from "./../screenobjects/all.screen.ts";
 import { driver } from "@wdio/globals";
 
-// afterEach(async () => {
-//     await entry.mainScreen.clickElement(entry.mainScreen.elements.clearButton);
-// });
-
 describe('My Login application', () => {
     
 
@@ -15,8 +11,14 @@ describe('My Login application', () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.darkThemeButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.submitThemeButton);
 
-        const backgroundColor = await entry.mainScreen.getElementBackgroundColor(entry.mainScreen.elements.mainCalculator);
-        expect(backgroundColor).toEqual('dark'); 
+        await entry.mainScreen.clickElement(entry.mainScreen.elements.moreOptionsButton);
+        await entry.mainScreen.clickElement(entry.mainScreen.elements.changeThemeButton);
+        
+        const darkThemeButton = await entry.mainScreen.getElement(entry.mainScreen.elements.darkThemeButton);
+        const isChecked = await darkThemeButton.getAttribute('checked');
+
+        expect(isChecked).toBeTruthy();
+        await entry.mainScreen.clickElement(entry.mainScreen.elements.submitThemeButton);
     })  
         
     it('Verify the plus button functionality', async () => {
@@ -24,10 +26,8 @@ describe('My Login application', () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.plusButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.eightButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.equalsButton);
-        //await expect((await entry.mainScreen.getElementText(entry.mainScreen.elements.resultPreviewField)).toString).toHaveText("11");
         const resultText = await entry.mainScreen.getElementText(entry.mainScreen.elements.finalResultField);
 
-        // Convert the text to a string and then assert its value
         await expect(resultText.toString()).toBe('15');
     })
 
@@ -37,7 +37,7 @@ describe('My Login application', () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.zeroButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.equalsButton);
         const resultText = await entry.mainScreen.getElementText(entry.mainScreen.elements.resultPreviewField);
-        // Convert the text to a string and then assert its value
+        
         await expect(resultText.toString()).toBe("Can't divide by 0");
 
         await entry.mainScreen.clickElement(entry.mainScreen.elements.clearButton);
@@ -49,7 +49,7 @@ describe('My Login application', () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.nineButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.equalsButton);
         const resultText = await entry.mainScreen.getElementText(entry.mainScreen.elements.resultPreviewField);
-        // Convert the text to a string and then assert its value
+        
         await expect(resultText.toString()).toBe("Format error");
     })
 
@@ -64,7 +64,6 @@ describe('My Login application', () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.moreOptionsButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.historyButton);
 
-        // Convert the text to a string and then assert its value
         await expect(await entry.historyScreen.isElementDisplayed(entry.historyScreen.elements.noHistoryText)).toBe(true);
     })
 })

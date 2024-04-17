@@ -7,13 +7,6 @@ import { browser, $, $$ } from '@wdio/globals'
 
 export default class Page {
 
-   async getElementBackgroundColor(element) {
-    // Use WebDriverIO to execute JavaScript code to get the computed style of the element
-    const style = await element.getCSSProperty('background-color');
-    // Extract and return the background color value from the style object
-    return style.value;
-  }
-
     public async getElement(element: string) {
       return $(element);
     }
