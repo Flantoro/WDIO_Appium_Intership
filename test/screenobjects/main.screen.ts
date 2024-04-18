@@ -8,6 +8,7 @@ class mainScreen extends Page {
         deleteButton: '//android.widget.ImageButton[@content-desc="delete"]',
         equalsButton: '//android.widget.ImageButton[@content-desc="equals"]',
         historyButton: '//android.widget.TextView[@resource-id="com.google.android.calculator:id/title" and @text="History"]',
+        changeThemeButton: '//android.widget.TextView[@resource-id="com.google.android.calculator:id/title" and @text="Choose theme"]',
 
         divideButton: '//android.widget.ImageButton[@content-desc="divide"]',
         multiplyButton: '//android.widget.ImageButton[@content-desc="multiply"]',
@@ -27,12 +28,6 @@ class mainScreen extends Page {
 
         resultPreviewField: '//android.widget.TextView[@resource-id="com.google.android.calculator:id/result_preview"]',
         finalResultField: '//android.widget.TextView[@resource-id="com.google.android.calculator:id/result_final"]',
-
-        changeThemeButton: '//android.widget.TextView[@resource-id="com.google.android.calculator:id/title" and @text="Choose theme"]',
-        darkThemeButton: '//android.widget.CheckedTextView[@resource-id="android:id/text1" and @text="Dark"]',
-        submitThemeButton: '//android.widget.Button[@resource-id="android:id/button1"]',
-
-        mainCalculator: '//android.view.ViewGroup[@resource-id="com.google.android.calculator:id/main_calculator"]'
 	};
 }
 

@@ -1,34 +1,32 @@
 import { expect } from '@wdio/globals'
 import entry from "./../screenobjects/all.screen.ts";
-import { driver } from "@wdio/globals";
+import fixtures from '../helpers/fixtures.ts';
 
-describe('My Login application', () => {
-    
-
-    it('Change background color', async () => {
+describe('Calculator', () => {
+    it('Verify background color change functionality', async () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.moreOptionsButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.changeThemeButton);
-        await entry.mainScreen.clickElement(entry.mainScreen.elements.darkThemeButton);
-        await entry.mainScreen.clickElement(entry.mainScreen.elements.submitThemeButton);
+        await entry.mainScreen.clickElement(entry.themeScreen.elements.darkThemeButton);
+        await entry.mainScreen.clickElement(entry.themeScreen.elements.submitThemeButton);
 
         await entry.mainScreen.clickElement(entry.mainScreen.elements.moreOptionsButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.changeThemeButton);
         
-        const darkThemeButton = await entry.mainScreen.getElement(entry.mainScreen.elements.darkThemeButton);
+        const darkThemeButton = await entry.mainScreen.getElement(entry.themeScreen.elements.darkThemeButton);
         const isChecked = await darkThemeButton.getAttribute('checked');
 
-        expect(isChecked).toBeTruthy();
-        await entry.mainScreen.clickElement(entry.mainScreen.elements.submitThemeButton);
+        await expect(isChecked).toBeTruthy();
+        await entry.mainScreen.clickElement(entry.themeScreen.elements.submitThemeButton);
     })  
         
-    it('Verify the plus button functionality', async () => {
+    it('Verify the multiply functionality', async () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.sevenButton);
-        await entry.mainScreen.clickElement(entry.mainScreen.elements.plusButton);
+        await entry.mainScreen.clickElement(entry.mainScreen.elements.multiplyButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.eightButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.equalsButton);
         const resultText = await entry.mainScreen.getElementText(entry.mainScreen.elements.finalResultField);
 
-        await expect(resultText.toString()).toBe('15');
+        await expect(resultText.toString()).toBe(fixtures.multiplyResult);
     })
 
     it('The error message shown during the dividing by zero', async () => {
@@ -38,7 +36,7 @@ describe('My Login application', () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.equalsButton);
         const resultText = await entry.mainScreen.getElementText(entry.mainScreen.elements.resultPreviewField);
         
-        await expect(resultText.toString()).toBe("Can't divide by 0");
+        await expect(resultText.toString()).toBe(fixtures.divideByZeroError);
 
         await entry.mainScreen.clickElement(entry.mainScreen.elements.clearButton);
     })
@@ -50,10 +48,10 @@ describe('My Login application', () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.equalsButton);
         const resultText = await entry.mainScreen.getElementText(entry.mainScreen.elements.resultPreviewField);
         
-        await expect(resultText.toString()).toBe("Format error");
+        await expect(resultText.toString()).toBe(fixtures.invalidInputError);
     })
 
-    it('Clear history', async () => {
+    it('History clearing functionality', async () => {
         await entry.mainScreen.clickElement(entry.mainScreen.elements.moreOptionsButton);
         await entry.mainScreen.clickElement(entry.mainScreen.elements.historyButton);
 

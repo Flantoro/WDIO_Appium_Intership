@@ -1,8 +1,6 @@
 import { config as sharedConfig } from "./wdio.conf.js";
-import { driver } from "@wdio/globals";
 import { join } from "path"
 import dotenv from "dotenv";
-import entry from "./../test/screenobjects/all.screen.ts";
 dotenv.config(); // Load environment variables from .env file
 
 export const config = {
