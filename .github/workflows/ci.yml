@@ -24,8 +24,8 @@ jobs:
       - name: Run Appium Tests
         run: |
           
-          export BROWSERSTACK_USERNAME="${{ secrets.BROWSERSTACK_USERNAME }}"
-          export BROWSERSTACK_ACCESS_KEY="${{ secrets.BROWSERSTACK_ACCESS_KEY }}"
-          export BROWSERSTACK_APP_ID="${{ secrets.BROWSERSTACK_APP_ID }}"
+          export BROWSERSTACK_USERNAME=${{ secrets.BROWSERSTACK_USERNAME }}
+          export BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          export BROWSERSTACK_APP_ID=${{ secrets.BROWSERSTACK_APP_ID }}
           
           npm run test:android:bs 
