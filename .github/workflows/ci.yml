@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BROWSERSTACK_USERNAME: andriistetsula_MF80wb
+      BROWSERSTACK_ACCESS_KEY: 15zaPWx574J8caWwBo2R
+      BROWSERSTACK_APP_ID: bs://f604966c194d44c64d1285e7dc6b9ec2216efe7f
 
     steps:
       - name: Checkout repository

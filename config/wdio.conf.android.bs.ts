@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
 export const config = {
     ...sharedConfig,
-    user: process.env.BROWSERSTACK_USERNAME,
-    key: process.env.BROWSERSTACK_ACCESS_KEY,
+    user: 'andriistetsula_MF80wb',
+    key: '15zaPWx574J8caWwBo2R',
     hostname: 'hub.browserstack.com',
 
     capabilities: [{
@@ -18,7 +18,7 @@ export const config = {
         [
           'browserstack',
           {
-            app: process.env.BROWSERSTACK_ANDROID_APP_ID,
+            app: 'bs://f604966c194d44c64d1285e7dc6b9ec2216efe7f',
             buildIdentifier: "${BUILD_NUMBER}",
             // opts: { forcelocal: false, localIdentifier: "webdriverio-appium-app-browserstack-repo" },
             browserstackLocal: true,
