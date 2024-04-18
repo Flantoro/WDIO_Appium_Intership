@@ -1,13 +1,19 @@
-name: ci
+name: BrowserStack Tests
 
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
-  appium-tests:
+  test:
+    name: Run tests on BrowserStack
     runs-on: ubuntu-latest
+
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BROWSERSTACK_APP_ID: ${{ secrets.BROWSERSTACK_APP_ID }}
 
     steps:
       - name: Checkout repository
@@ -19,13 +25,7 @@ jobs:
           node-version: "18"
 
       - name: Install dependencies
-        run: npm install 
+        run: npm install
 
-      - name: Run Appium Tests
-        run: |
-          
-          export BROWSERSTACK_USERNAME=${{ secrets.BROWSERSTACK_USERNAME }}
-          export BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          export BROWSERSTACK_APP_ID=${{ secrets.BROWSERSTACK_APP_ID }}
-          
-          npm run test:android:bs 
+      - name: Run BrowserStack tests
+        run: npm run test:android:bs
