@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
 export const config = {
     ...sharedConfig,
-    user: 'andriistetsula_MF80wb',
-    key: '15zaPWx574J8caWwBo2R',
+    user: process.env.BROWSERSTACK_USERNAME,
+    key: process.env.BROWSERSTACK_ACCESS_KEY,
     hostname: 'hub.browserstack.com',
 
     capabilities: [{
